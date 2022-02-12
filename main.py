@@ -13,17 +13,20 @@ def main():
      
     # create a surface on screen that has the size of 240 x 180
     screen = pygame.display.set_mode((1000,1000))
+    grid = [(50,200),(260,200),(470,200),(680,200)]
 
     # images on screen
-    image = pygame.image.load("x_wing.jpeg")
-    screen.blit(image, (200,200))
-    pygame.display.flip()
+    x_wing = pygame.image.load("x_wing.jpeg")
+    x_wing = pygame.transform.scale(x_wing, (200, 200))
      
     # define a variable to control the main loop
     running = True
      
     # main loop
     while running:
+        for x in grid:
+                screen.blit(x_wing, x)
+        pygame.display.flip()
         # event handling, gets all event from the event queue
         for event in pygame.event.get():
             # only do something if the event is of type QUIT
